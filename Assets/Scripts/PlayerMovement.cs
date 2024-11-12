@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpHeight = 3f;
 
     public Transform groundCheck;
-    public float groundDistance = 0.4f;
+    public float groundDistance = 0.6f;
     public LayerMask groundMask;
 
     Vector3 velocity;
@@ -23,45 +23,51 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       
+
         controller = GetComponent<CharacterController>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Ground check
+        // Kiểm tra xem nhân vật có đang trên mặt đất không
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        //resetting the default velocity
+        // Đặt lại vận tốc y nếu đang đứng trên mặt đất
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
-
         }
-        //lay input
+
+        // Lấy giá trị từ input
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        //tao vector di chuyen
+        // Tạo vector di chuyển
         Vector3 move = transform.right * x + transform.forward * z;
 
-        //di chuyen that su
+        // Thực hiện di chuyển
         controller.Move(move * speed * Time.deltaTime);
 
-        //check if the player can jump
+        // Xử lý nhảy
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
-            //Actually jumping
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
-        //Falling down
-        velocity.y += gravity * Time.deltaTime;
+        // Xử lý rơi xuống
+        if (!isGrounded)
+        {
+            velocity.y += gravity * Time.deltaTime;
+        }
 
-        //Executing the jump
+        // Di chuyển với vận tốc trọng lực
         controller.Move(velocity * Time.deltaTime);
 
-        if (lastPosition != gameObject.transform.position && isGrounded == true)
+        // Cập nhật trạng thái di chuyển
+        if (Vector3.Distance(lastPosition, gameObject.transform.position) > 0.01f && isGrounded)
         {
             isMoving = true;
         }
@@ -70,7 +76,8 @@ public class PlayerMovement : MonoBehaviour
             isMoving = false;
         }
 
-        lastPosition = gameObject.transform.position;    
-
+        // Cập nhật vị trí cuối cùng
+        lastPosition = gameObject.transform.position;
     }
+
 }
