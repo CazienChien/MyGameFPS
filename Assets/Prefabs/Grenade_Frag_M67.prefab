@@ -150,11 +150,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7cb6434c526c4543aa67b1b653138f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 3
+  delay: 2.5
   damgageRadius: 20
   explosionForce: 1200
   hasBeenThrown: 0
-  throwableType: 0
+  throwableType: 1
 --- !u!114 &8768661849580161565
 MonoBehaviour:
   m_ObjectHideFlags: 0
