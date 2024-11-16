@@ -8,6 +8,8 @@ TagManager:
   - Wall
   - Zombie
   - Enemy
+  - Waypoints
+  - ZombieHand
   layers:
   - Default
   - TransparentFX
