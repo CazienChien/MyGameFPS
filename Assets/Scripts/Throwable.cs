@@ -106,6 +106,10 @@ public class Throwable : MonoBehaviour
 
             //Aplly damage to enemies
 
+            if (objectInRange.gameObject.GetComponent<Enemy>())
+            {
+                objectInRange.gameObject.GetComponent<Enemy>().TakeDamage(100);
+            }
         }
     }
 }
