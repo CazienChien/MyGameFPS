@@ -7,6 +7,12 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
     {
         public bool isActiveWeapon;
+        public int weaponDamage;
+
+
+
+
+
         [Header("Shooting")]
         // Shooting
         public bool isShooting, readyToShoot;
@@ -148,7 +154,8 @@ public class Weapon : MonoBehaviour
 
             readyToShoot = false;
             Vector3 shootingDirection = CalculateDirectionAndSpread().normalized;
-        // Trigger recoil if the gun is not already recoiling
+
+            // Trigger recoil if the gun is not already recoiling
             Debug.Log("Bullet Spawn Position: " + bulletSpawn.position);
            
             
@@ -163,9 +170,15 @@ public class Weapon : MonoBehaviour
 
 
 
-        // Instantiate the bullet
-        GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity);
+            // Instantiate the bullet
+            GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity);
+            
+            Bullet bul = bullet.GetComponent<Bullet>();
+            bul.bulletDamage = weaponDamage;
+
+            // Pointing the bullet to face the shooting direction
             bullet.transform.forward = shootingDirection;
+            
 
             // Shoot
             bullet.GetComponent<Rigidbody>().AddForce(shootingDirection * bulletVelocity, ForceMode.Impulse);
