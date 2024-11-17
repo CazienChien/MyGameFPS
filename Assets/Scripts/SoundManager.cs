@@ -31,6 +31,12 @@ public class SoundManager : MonoBehaviour
 
     public AudioSource zombieChannel;
     public AudioSource zombieChannel2;
+
+    public AudioSource playerChannel;
+    public AudioClip playerHurt;
+    public AudioClip playerDeath;
+
+    public AudioClip gameOverMusic;
     private void Awake()
     {
         if (Instance != null && Instance != this)

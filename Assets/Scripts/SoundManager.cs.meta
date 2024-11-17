@@ -3,7 +3,29 @@ guid: 79d7bc09d216fbd4ba1dc5d91a88f110
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - ShootingChannel: {instanceID: 0}
+  - emptyMagazineSoundRifle: {instanceID: 0}
+  - reloadingSoundM4A1: {instanceID: 0}
+  - reloadingSoundDeagle: {instanceID: 0}
+  - reloadingSoundAK47: {instanceID: 0}
+  - Deagleshot: {instanceID: 0}
+  - M4A1shot: {instanceID: 0}
+  - AK47shot: {instanceID: 0}
+  - throwablesChannel: {instanceID: 0}
+  - grenadeSound: {instanceID: 0}
+  - smokeGrenadeSound: {instanceID: 0}
+  - zombieWalking: {instanceID: 0}
+  - zombieChasing: {instanceID: 0}
+  - zombieAttacking: {instanceID: 0}
+  - zombieHurt: {instanceID: 0}
+  - zombieDeath: {instanceID: 0}
+  - zombieChannel: {instanceID: 0}
+  - zombieChannel2: {instanceID: 0}
+  - playerChannel: {instanceID: 0}
+  - playerHurt: {instanceID: 0}
+  - playerDeath: {instanceID: 0}
+  - gameOverMusic: {fileID: 8300000, guid: ab9a8d62218cac9489a863efeece6ebb, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

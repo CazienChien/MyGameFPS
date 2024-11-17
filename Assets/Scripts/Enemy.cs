@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
             {
                 animator.SetTrigger("Die2");
             }
-            
+            GetComponent<CapsuleCollider>().enabled = false;
             isDead = true;
 
             //Dead sound
