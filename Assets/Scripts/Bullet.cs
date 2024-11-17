@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,17 +27,34 @@ public class Bullet : MonoBehaviour
 
             Destroy(gameObject);
         }
-        if (objectWeHit.gameObject.CompareTag("Wall"))
-        {
-            print("hit a wall");
-            Destroy(gameObject);
-        }
+        
         if (objectWeHit.gameObject.CompareTag("Enemy"))
         {
-            objectWeHit.gameObject.GetComponent<Enemy>().TakeDamage(bulletDamage);
-            Destroy(gameObject);
+            print("hit a Zombie");
+
+            if(objectWeHit.gameObject.GetComponent<Enemy>().isDead == false)
+            {
+                objectWeHit.gameObject.GetComponent<Enemy>().TakeDamage(bulletDamage);
+                CreateBloodSprayEffect(objectWeHit);
+            }
+
+            //Destroy(gameObject);
         }
     }
+
+    private void CreateBloodSprayEffect(Collision objectWeHit)
+    {
+        ContactPoint contact = objectWeHit.contacts[0];
+
+        GameObject bloodSprayPrefab = Instantiate(
+            GlobalReferences.Instance.bloodSprayEffect,
+            contact.point,
+            Quaternion.LookRotation(contact.normal)
+
+            );
+        bloodSprayPrefab.transform.SetParent(objectWeHit.gameObject.transform);
+    }
+
     void CreateBulletImpactEffect(Collision objectWeHit)
     {
         ContactPoint contact = objectWeHit.contacts[0];
