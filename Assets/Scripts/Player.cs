@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     public TextMeshProUGUI playerHealthUI;
     public GameObject gameOverUI;
 
+    public GameObject weaponPanel;
+
     public bool isDead;
 
     private void Start()
@@ -23,6 +25,13 @@ public class Player : MonoBehaviour
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+
+
+        if (weaponPanel != null)
+        {
+            weaponPanel.SetActive(true);
+        }
+
     }
 
     public void TakeDamage(int damageAmount)
@@ -58,8 +67,14 @@ public class Player : MonoBehaviour
         GetComponent<MouseMovement>().enabled = false;
         GetComponent<PlayerMovement>().enabled = false;
 
+        if (weaponPanel != null)
+        {
+            weaponPanel.SetActive(false);
+        }
+
         //Dying Animation
         GetComponentInChildren<Animator>().enabled = true;
+        
         playerHealthUI.gameObject.SetActive(false);
 
         GetComponent<ScreenFader>().StartFade();
@@ -68,6 +83,11 @@ public class Player : MonoBehaviour
 
     private IEnumerator ShowGameOverUI()
     {
+
+        if (HUDManager.Instance != null)
+        {
+            HUDManager.Instance.gameObject.SetActive(false);
+        }
         yield return new WaitForSeconds(1f);
         gameOverUI.gameObject.SetActive(true);
 

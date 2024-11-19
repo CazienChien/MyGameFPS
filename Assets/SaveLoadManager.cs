@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SaveLoadManager : MonoBehaviour
 {
-    public static SaveLoadManager Instance { get; set; }
+    public static SaveLoadManager Instance { get; private set; }
 
     string highScoreKey = "BestWaveSavedValue";
 
@@ -27,6 +27,7 @@ public class SaveLoadManager : MonoBehaviour
     public void SaveHighScore(int score)
     {
         PlayerPrefs.SetInt(highScoreKey, score);
+        PlayerPrefs.Save();
     }
 
     public int LoadHighScore()

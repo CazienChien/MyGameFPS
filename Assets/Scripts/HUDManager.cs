@@ -43,6 +43,7 @@ public class HUDManager : MonoBehaviour
     }
     private void Update()
     {
+        
         Weapon activeWeapon = WeaponManager.Instance.activeWeaponSlot.GetComponentInChildren<Weapon>();
         Weapon unActiveWeapon = GetUnActiveWeaponSlot().GetComponentInChildren<Weapon>();
 
