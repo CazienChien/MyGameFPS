@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -26,7 +26,8 @@ public class Enemy : MonoBehaviour
         {
             int randomValue = Random.Range(0, 2);
 
-            if(randomValue == 0)
+            
+            if (randomValue == 0)
             {
                 animator.SetTrigger("Die1");
             }
@@ -37,8 +38,23 @@ public class Enemy : MonoBehaviour
             GetComponent<CapsuleCollider>().enabled = false;
             isDead = true;
 
+
+            // Tắt Rigidbody nếu có
+            Rigidbody rb = GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.isKinematic = true;  // Đảm bảo không còn tác động vật lý
+            }
+
+            // Tắt NavMeshAgent nếu có
+            if (navAgent != null)
+            {
+                navAgent.enabled = false;
+            }
+
             //Dead sound
             SoundManager.Instance.zombieChannel2.PlayOneShot(SoundManager.Instance.zombieDeath);
+            
         }
         else
         {
@@ -48,6 +64,7 @@ public class Enemy : MonoBehaviour
             SoundManager.Instance.zombieChannel2.PlayOneShot(SoundManager.Instance.zombieHurt);
         }
     }
+
 
     private void OnDrawGizmos()
     {

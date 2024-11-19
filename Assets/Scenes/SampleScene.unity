@@ -30784,6 +30784,11 @@ PrefabInstance:
       propertyPath: weaponDamage
       value: 25
       objectReference: {fileID: 0}
+    - target: {fileID: 7440099242846200563, guid: 15f1ff7d7896d514a90dfa973f793f6d,
+        type: 3}
+      propertyPath: shootingDelay
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -30953,6 +30958,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ZombieSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 3820591865866204011, guid: 490cbc3f62c40e641a3205a63082e368,
+        type: 3}
+      propertyPath: spawnDelay
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3820591865866204011, guid: 490cbc3f62c40e641a3205a63082e368,
         type: 3}

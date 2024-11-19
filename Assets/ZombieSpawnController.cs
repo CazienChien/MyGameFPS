@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 public class ZombieSpawnController : MonoBehaviour
 {
-    public int initialZombiePerWave = 2;
+    public int initialZombiePerWave = 5;
     public int currentZombiesPerWave;
 
     public float spawnDelay = 0.5f; //Delay between spawning each zombie in a wave
@@ -22,16 +22,11 @@ public class ZombieSpawnController : MonoBehaviour
     public List<Enemy> currentZombiesAlive;
 
     public GameObject zombiePrefab;
-    public GameObject fastZombiePrefab;
-    public GameObject strongZombiePrefab;
 
     public TextMeshProUGUI waveOverUI;
     public TextMeshProUGUI cooldownCounterUI;
 
     public TextMeshProUGUI currentWaveUI;
-
-    private int zombieTypeChangeInterval = 3; // Every 3 waves, change zombie type
-    private int zombieTypeIndex = 0; // 0 = Default, 1 = Fast, 2 = Strong
     private void Start()
     {
         currentZombiesPerWave = initialZombiePerWave;
@@ -48,19 +43,6 @@ public class ZombieSpawnController : MonoBehaviour
 
         currentWave++;
 
-        int newZombieTypeIndex = (currentWave - 1) / zombieTypeChangeInterval % 3;
-
-        if (newZombieTypeIndex != zombieTypeIndex)
-        {
-            zombieTypeIndex = newZombieTypeIndex;
-            currentZombiesPerWave = initialZombiePerWave;
-        }
-        else
-        {
-            // Double the number of zombies for the same type
-            currentZombiesPerWave *= 2;
-        }
-
         GlobalReferences.Instance.waveNumber = currentWave;
         currentWaveUI.text = "Wave: " + currentWave.ToString();
         StartCoroutine(SpawnWave());
@@ -70,15 +52,12 @@ public class ZombieSpawnController : MonoBehaviour
     {
         for (int i = 0; i < currentZombiesPerWave; i++)
         {
-
-            GameObject zombiePrefabToSpawn = GetZombiePrefabType();
-
             //Generate a random offset within a specified range
-            Vector3 spawnOffset = new Vector3(Random.Range(-3f, 3f), 0f, Random.Range(-3f, 3f));
+            Vector3 spawnOffset = new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f));
             Vector3 spawnPosition = transform.position + spawnOffset;
 
             //Instantiate the zombie
-            var zombie = Instantiate(zombiePrefabToSpawn, spawnPosition, Quaternion.identity);
+            var zombie = Instantiate(zombiePrefab, spawnPosition, Quaternion.identity);
 
             //Get enemy script
             Enemy enemyScript = zombie.GetComponent<Enemy>();
@@ -87,21 +66,6 @@ public class ZombieSpawnController : MonoBehaviour
             currentZombiesAlive.Add(enemyScript);
 
             yield return new WaitForSeconds(spawnDelay);
-        }
-    }
-
-    private GameObject GetZombiePrefabType()
-    {
-        switch (zombieTypeIndex)
-        {
-            case 0: // Default zombie
-                return zombiePrefab;
-            case 1: // Fast zombie
-                return fastZombiePrefab;
-            case 2: // Strong zombie
-                return strongZombiePrefab;
-            default:
-                return zombiePrefab;
         }
     }
 
@@ -121,6 +85,7 @@ public class ZombieSpawnController : MonoBehaviour
         foreach (Enemy zombie in zombiesToRemove)
         {
             currentZombiesAlive.Remove(zombie);
+            
         }
 
         zombiesToRemove.Clear();
@@ -148,6 +113,7 @@ public class ZombieSpawnController : MonoBehaviour
 
     private IEnumerator WaveCooldown()
     {
+        
         inCooldown = true;
         waveOverUI.gameObject.SetActive(true);
 
@@ -155,7 +121,7 @@ public class ZombieSpawnController : MonoBehaviour
 
         inCooldown = false;
         waveOverUI.gameObject.SetActive(false);
-        //currentZombiesPerWave *= 2;
+        currentZombiesPerWave += 2;
         StartNextWave();
     }
 }

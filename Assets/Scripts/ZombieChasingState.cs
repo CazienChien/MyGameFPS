@@ -35,7 +35,10 @@ public class ZombieChasingState : StateMachineBehaviour
 
         }
 
-        agent.SetDestination(player.position);
+        if (agent.isActiveAndEnabled)
+        {
+            agent.SetDestination(player.position);
+        }
         animator.transform.LookAt(player);
 
         float distanceFromPlayer = Vector3.Distance(player.position, animator.transform.position);
@@ -58,7 +61,10 @@ public class ZombieChasingState : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        agent.SetDestination(animator.transform.position);
+        if (agent.isActiveAndEnabled)
+        {
+            agent.SetDestination(animator.transform.position);
+        }
 
         SoundManager.Instance.zombieChannel.Stop();
     }

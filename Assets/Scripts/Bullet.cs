@@ -38,7 +38,7 @@ public class Bullet : MonoBehaviour
                 CreateBloodSprayEffect(objectWeHit);
             }
 
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 
