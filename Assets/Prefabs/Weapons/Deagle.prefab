@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2923866879742239053}
   - component: {fileID: 5489802782720238553}
   - component: {fileID: 6561929067096751902}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Pistol_D_Mag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5112067159734191737}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: BulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 7582295595888426171}
   - component: {fileID: 3859373608842733930}
   - component: {fileID: 6216852538883590629}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: MuzzleFlashEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4909,7 +4909,7 @@ GameObject:
   - component: {fileID: 2367297507964911725}
   - component: {fileID: 572011311786801677}
   - component: {fileID: 1441957076527013719}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Pistol_D_Bolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4992,7 +4992,7 @@ GameObject:
   - component: {fileID: 4897775638107985088}
   - component: {fileID: 1056535298619050913}
   - component: {fileID: 2163648737694420740}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Pistol_D_Receiver_Part
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5077,7 +5077,7 @@ GameObject:
   - component: {fileID: 6409816498935817836}
   - component: {fileID: 2992763471147534302}
   - component: {fileID: 3710858055649640248}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Deagle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5119,6 +5119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActiveWeapon: 0
+  weaponDamage: 0
   isShooting: 0
   readyToShoot: 0
   shootingDelay: 0.6
@@ -5210,7 +5211,7 @@ GameObject:
   - component: {fileID: 7585241665890569844}
   - component: {fileID: 3909596310367428651}
   - component: {fileID: 1631655524310558531}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Pistol_D_Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5293,7 +5294,7 @@ GameObject:
   - component: {fileID: 2415395932041976492}
   - component: {fileID: 4803833157459074535}
   - component: {fileID: 483057951547444389}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Pistol_D_Receiver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5376,7 +5377,7 @@ GameObject:
   - component: {fileID: 323962821571889756}
   - component: {fileID: 5456925354458008285}
   - component: {fileID: 6184569693122419346}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Pistol_D_Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

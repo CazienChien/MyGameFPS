@@ -77,7 +77,7 @@ public class Throwable : MonoBehaviour
             Rigidbody rb = objectInRange.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                //Aplly damage to enemies
+                //Aplly blind to enemies
 
             }
 

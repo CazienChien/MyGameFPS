@@ -9,10 +9,6 @@ public class Weapon : MonoBehaviour
         public bool isActiveWeapon;
         public int weaponDamage;
 
-
-
-
-
         [Header("Shooting")]
         // Shooting
         public bool isShooting, readyToShoot;
@@ -87,7 +83,10 @@ public class Weapon : MonoBehaviour
             if (isActiveWeapon)
             {
                
-
+                foreach(Transform child in transform)
+                {
+                    child.gameObject.layer = LayerMask.NameToLayer("WeaponRender");
+                }
                 
 
                 GetComponent<Outline>().enabled = false;
@@ -133,6 +132,13 @@ public class Weapon : MonoBehaviour
                 }
 
 
+            }
+            else
+            {
+                foreach(Transform child in transform)
+                {
+                    child.gameObject.layer = LayerMask.NameToLayer("Default");
+                }
             }
 
         }
